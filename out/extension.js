@@ -11,7 +11,7 @@ function activate(context) {
         vscode.languages.registerFoldingRangeProvider({ scheme: "file", language: "sass" }, provider);
         vscode.languages.registerFoldingRangeProvider({ scheme: "file", language: "scss" }, provider);
     }
-    
+
     const foldAllComments = vscode.commands.registerCommand("extension.foldAllComments", () => {
         const active = vscode.window.activeTextEditor;
         if (active) {

@@ -1,8 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const vscode = require("vscode");
+
 class FoldCommentProvider {
-    provideFoldingRanges(doc) {
+    provideFoldingRanges (doc) {
         const active = vscode.window.activeTextEditor;
         if (!active) {
             return;
@@ -10,8 +11,8 @@ class FoldCommentProvider {
         return getRanges(doc);
     }
 }
-exports.FoldCommentProvider = FoldCommentProvider;
-function getRanges(doc) {
+
+function getRanges (doc) {
     const text = doc.getText();
     const reg = /^\s*\/\/*/gm;
     const lines = [];
@@ -39,26 +40,28 @@ function getRanges(doc) {
     }
     return ranges;
 }
-exports.getRanges = getRanges;
-function applyRange(ranges, editor, fn) {
+
+function applyRange (ranges, editor, fn) {
     const selection = editor.selection;
     return Promise.all(ranges.map(fn)).then(() => {
         editor.selection = selection;
     });
 }
-exports.applyRange = applyRange;
-function foldRanges(ranges, editor) {
+function foldRanges (ranges, editor) {
     return applyRange(ranges, editor, x => {
         editor.selection = new vscode.Selection(x.start, 0, x.end, 0);
         return vscode.commands.executeCommand("editor.fold");
     });
 }
-exports.foldRanges = foldRanges;
-function unfoldRanges(ranges, editor) {
+function unfoldRanges (ranges, editor) {
     return applyRange(ranges, editor, x => {
         editor.selection = new vscode.Selection(x.start, 0, x.end, 0);
         return vscode.commands.executeCommand("editor.unfold");
     });
 }
+exports.getRanges = getRanges;
+exports.foldRanges = foldRanges;
+exports.FoldCommentProvider = FoldCommentProvider;
+exports.applyRange = applyRange;
 exports.unfoldRanges = unfoldRanges;
 //# sourceMappingURL=fold.js.map
