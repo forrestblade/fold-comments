@@ -11,7 +11,8 @@ function activate(context) {
         vscode.languages.registerFoldingRangeProvider({ scheme: "file", language: "sass" }, provider);
         vscode.languages.registerFoldingRangeProvider({ scheme: "file", language: "scss" }, provider);
     }
-    const foldAll = vscode.commands.registerCommand("extension.mhFoldAllComments", () => {
+    
+    const foldAllComments = vscode.commands.registerCommand("extension.foldAllComments", () => {
         const active = vscode.window.activeTextEditor;
         if (active) {
             try {
@@ -23,14 +24,15 @@ function activate(context) {
             }
         }
     });
-    const unfoldAll = vscode.commands.registerCommand("extension.mhUnfoldAllComments", () => {
+
+    const unfoldAllComments = vscode.commands.registerCommand("extension.unfoldAllComments", () => {
         const active = vscode.window.activeTextEditor;
         if (active) {
             const ranges = fold_1.getRanges(active.document);
             fold_1.unfoldRanges(ranges, active);
         }
     });
-    context.subscriptions.push(foldAll, unfoldAll);
+    context.subscriptions.push(foldAllComments, unfoldAllComments);
 }
 exports.activate = activate;
 function deactivate() { }
