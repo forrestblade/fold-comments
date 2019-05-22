@@ -1,0 +1,56 @@
+{
+	"name": "foldallcomments",
+	"displayName": "FoldAllComments",
+	"description": "Fold all code comments by hotkey",
+	"version": "0.0.1",
+	"publisher": "marvinhagemeister",
+	"engines": {
+		"vscode": "^1.25.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/marvinhagemeister/vscode-fold-comments.git"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onLanguage:typescript",
+		"onLanguage:javascript",
+		"onLanguage:sass",
+		"onLanguage:scss"
+	],
+	"main": "./out/extension",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.mhFoldAllComments",
+				"title": "Fold All Comments"
+			},
+			{
+				"command": "extension.mhUnfoldAllComments",
+				"title": "Unfold All Comments"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "npm run compile && node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"typescript": "^2.6.1",
+		"vscode": "^1.1.6",
+		"tslint": "^5.8.0",
+		"@types/node": "^7.0.43",
+		"@types/mocha": "^2.2.42"
+	},
+	"dependencies": {},
+	"__metadata": {
+		"id": "9ee29578-c476-4ac5-832b-207aedf0f85d",
+		"publisherId": "d9d84f25-344f-4bfd-bf0e-1dd69d406b55",
+		"publisherDisplayName": "Marvin Hagemeister"
+	}
+}
