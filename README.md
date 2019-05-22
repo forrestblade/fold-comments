@@ -7,6 +7,12 @@ This extension adds a command to fold inline comments like:
 // me too
 ```
 
+## Contributing
+
+Please adhere to semantic commit conventions when creating a PR
+
+https://seesparkbox.com/foundry/semantic_commit_messages
+
 ## License
 
 `MIT`, see the License file.
