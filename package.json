@@ -3,13 +3,13 @@
 	"displayName": "FoldAllComments",
 	"description": "Fold all code comments by hotkey",
 	"version": "0.0.1",
-	"publisher": "marvinhagemeister",
+	"publisher": "forrestblade",
 	"engines": {
 		"vscode": "^1.25.0"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/marvinhagemeister/vscode-fold-comments.git"
+		"url": "https://github.com/forrestblade/fold-comments.git"
 	},
 	"categories": [
 		"Other"
@@ -47,10 +47,5 @@
 		"@types/node": "^7.0.43",
 		"@types/mocha": "^2.2.42"
 	},
-	"dependencies": {},
-	"__metadata": {
-		"id": "9ee29578-c476-4ac5-832b-207aedf0f85d",
-		"publisherId": "d9d84f25-344f-4bfd-bf0e-1dd69d406b55",
-		"publisherDisplayName": "Marvin Hagemeister"
-	}
+	"dependencies": {}
 }
