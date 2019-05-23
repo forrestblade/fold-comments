@@ -14,7 +14,7 @@ class FoldCommentProvider {
 
 function getRanges (doc) {
     const text = doc.getText();
-    const reg = /^\s*\/\/*/gm;
+    const reg = /\/\*[\s\S]*?\*\/|([^\\:]|^)\/\/.*$/g
     const lines = [];
     let match;
     while ((match = reg.exec(text))) {
@@ -47,18 +47,21 @@ function applyRange (ranges, editor, fn) {
         editor.selection = selection;
     });
 }
+
 function foldRanges (ranges, editor) {
     return applyRange(ranges, editor, x => {
         editor.selection = new vscode.Selection(x.start, 0, x.end, 0);
         return vscode.commands.executeCommand("editor.fold");
     });
 }
+
 function unfoldRanges (ranges, editor) {
     return applyRange(ranges, editor, x => {
         editor.selection = new vscode.Selection(x.start, 0, x.end, 0);
         return vscode.commands.executeCommand("editor.unfold");
     });
 }
+
 exports.getRanges = getRanges;
 exports.foldRanges = foldRanges;
 exports.FoldCommentProvider = FoldCommentProvider;
